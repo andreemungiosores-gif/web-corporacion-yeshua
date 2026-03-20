@@ -169,8 +169,8 @@ function App() {
               
               <div className="school-preview">
                 <img 
-                  src="/santa-maria-kids.png" 
-                  alt="Niños peruanos estudiando en la selva" 
+                  src="/santa-maria-real.jpg" 
+                  alt="Estudiantes del Colegio Santa María de Guadalupe" 
                 />
               </div>
 
@@ -180,9 +180,9 @@ function App() {
                 Formamos a niños y adolescentes a través de metodologías innovadoras. Promovemos fuertemente los valores cristianos y católicos. Nuestro modelo educativo asegura que los alumnos de nivel primario y secundario obtengan bases académicas altamente competitivas, junto a un sólido desarrollo socioemocional apoyado por tutores y personal psicológico dedicado.
               </p>
               <ul className="school-highlights">
-                <li>Educación Inicial, Primaria y Secundaria</li>
-                <li>Laboratorios modernos</li>
-                <li>Enfoque en desarrollo integral</li>
+                <li>Educación Inicial, Primaria y Secundaria.</li>
+                <li>Docentes calificados.</li>
+                <li>Valores cristianos católicos.</li>
               </ul>
             </div>
           </div>
