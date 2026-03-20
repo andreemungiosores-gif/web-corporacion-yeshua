@@ -25,6 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 const MAP_POSITION = [-8.373596666404865, -74.54289978098608]; // Pucallpa
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const schoolsHeadingRef = useRef(null);
@@ -117,8 +118,33 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Navigation Navbar */}
+      <nav className="navbar glass-panel">
+        <div className="nav-container">
+          <div className="nav-logo">Corporación Yeshua</div>
+          
+          <button 
+            className={`nav-toggle ${isMenuOpen ? 'open' : ''}`} 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+            <li><a href="#inicio" onClick={() => setIsMenuOpen(false)}>Inicio</a></li>
+            <li><a href="#nosotros" onClick={() => setIsMenuOpen(false)}>Nosotros</a></li>
+            <li><a href="#instituciones" onClick={() => setIsMenuOpen(false)}>Instituciones</a></li>
+            <li><a href="#beneficios" onClick={() => setIsMenuOpen(false)}>Beneficios</a></li>
+            <li><a href="#ubicacion" onClick={() => setIsMenuOpen(false)}>Ubicación</a></li>
+          </ul>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <header className="hero">
+      <header id="inicio" className="hero">
         <div ref={heroRef} style={{ position: 'relative', zIndex: 2 }}>
           <h1>Corporación Yeshua SRL</h1>
           <p>
@@ -130,7 +156,7 @@ function App() {
       </header>
 
       {/* About Section */}
-      <section className="about-section">
+      <section id="nosotros" className="about-section">
         <div className="about-content" ref={aboutRef}>
           <div className="about-text">
             <h2>Nuestra Misión y Visión</h2>
@@ -153,7 +179,7 @@ function App() {
       </section>
 
       {/* Schools Section */}
-      <section className="schools-section">
+      <section id="instituciones" className="schools-section">
         <h2 ref={schoolsHeadingRef}>Nuestras Instituciones</h2>
         
         <div className="schools-grid">
@@ -199,8 +225,8 @@ function App() {
 
               <div className="school-preview">
                  <img 
-                   src="/san-martin-adults.png" 
-                   alt="Adultos peruanos colaborando en la selva" 
+                   src="/san-martin-real.jpg" 
+                   alt="Estudiantes del Colegio San Martín de Porres" 
                  />
               </div>
 
@@ -210,9 +236,9 @@ function App() {
                 Diseñado exclusivamente para jóvenes y adultos que desean iniciar, continuar o culminar sus estudios de forma rápida sin descuidar la vida laboral o personal. Nuestros docentes utilizan andragogía para asegurar la eficiencia del aprendizaje, combinando clases con herramientas digitales modernas que garantizan un resultado exitoso y certificación a nombre del Ministerio de Educación.
               </p>
               <ul className="school-highlights">
-                <li>Ciclos intensivos para jóvenes y adultos</li>
-                <li>Horarios flexibles (Fines de semana/Noche)</li>
-                <li>Certificación oficial e inmediata</li>
+                <li>Termina la secundaria en corto tiempo.</li>
+                <li>Horarios sábados y domingos en virtual, presencial o a distancia.</li>
+                <li>Certificado oficial válido por el Ministerio de Educación - MINEDU.</li>
               </ul>
             </div>
           </div>
@@ -220,7 +246,7 @@ function App() {
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
+      <section id="beneficios" className="features-section">
         <h2>¿Por qué elegirnos?</h2>
         <div className="features-grid">
           <div className="feature-item glass-panel">
@@ -242,7 +268,7 @@ function App() {
       </section>
 
       {/* Location Section */}
-      <section className="location-section">
+      <section id="ubicacion" className="location-section">
         <div ref={locationRef}>
           <h2>Ubicación</h2>
           <div className="location-content">
@@ -281,6 +307,19 @@ function App() {
       <footer>
         <p>&copy; {new Date().getFullYear()} Corporación Yeshua SRL. Todos los derechos reservados.</p>
       </footer>
+
+      {/* WhatsApp Floating Button */}
+      <a 
+        href="https://api.whatsapp.com/send/?phone=%2B51974135754&text&type=phone_number&app_absent=0" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="whatsapp-float"
+        aria-label="Contact on WhatsApp"
+      >
+        <svg viewBox="0 0 448 512" width="24" height="24" fill="currentColor">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 100.3 32 0 132.3 0 256c0 39.5 10.3 78 30 112.6L0 480l114.6-30c33.3 18.2 70.8 27.8 109.3 27.8 123.6 0 223.9-100.3 223.9-224 0-59.4-23.2-115.3-65.1-117.2zM224 438c-33.3 0-66-8.9-94.4-25.7l-6.7-4-70.2 18.4 18.8-68.5-4.4-7.1C49.9 322.2 41 289.8 41 256 41 155.1 122.1 74 223.1 74c49 0 95 19.1 129.7 53.8C387.5 162.6 406.6 208.6 406.6 257c0 101-81.1 181-182.6 181zm113.4-154.3c-6.2-3.1-36.9-18.2-42.6-20.3-5.7-2.1-9.9-3.1-14 3.1-4.1 6.2-16 20.3-19.6 24.5-3.6 4.1-7.3 4.7-13.5 1.6-6.2-3.1-26.4-9.7-50.4-31.2-18.7-16.6-31.3-37.2-35-43.4-3.6-6.2-.4-9.6 2.8-12.7 2.8-2.8 6.2-7.3 9.4-10.9 3.1-3.6 4.1-6.2 6.2-10.4 2.1-4.1 1-7.8-.5-10.9-1.5-3.1-14-33.7-19.1-46.1-5.1-12.3-10.2-10.6-14-10.6-3.6 0-7.8-.5-12-.5-4.1 0-10.9 1.5-16.6 7.8-5.7 6.2-22.3 21.8-22.3 53.4 0 31.6 23 62.2 26.2 66.3 3.1 4.1 45.2 69 109.4 96.8 15.3 6.6 27.2 10.6 36.5 13.5 15.3 4.8 29.3 4.1 40.3 2.5 12.3-1.8 36.9-15.1 42.1-29.6 5.1-14.5 5.1-27 3.6-29.6-1.5-2.6-5.7-4.1-11.9-7.2z"/>
+        </svg>
+      </a>
     </div>
   );
 }
