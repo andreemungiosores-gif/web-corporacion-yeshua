@@ -26,6 +26,7 @@ const MAP_POSITION = [-8.373596666404865, -74.54289978098608]; // Pucallpa
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const scrollContainerRef = useRef(null);
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const schoolsHeadingRef = useRef(null);
@@ -182,11 +183,37 @@ function App() {
       <section id="instituciones" className="schools-section">
         <h2 ref={schoolsHeadingRef}>Nuestras Instituciones</h2>
         
-        <div className="schools-grid">
-          {/* Santa Maria Card */}
+        <div className="schools-grid" ref={scrollContainerRef}>
+          {/* School 1: Santa Maria Inicial */}
+          <div className="school-wrapper" ref={(el) => (cardsRef.current[0] = el)}>
+            <div className="school-card glass-panel">
+              <div className="logo-container">
+                <img src={logoSantaMaria} alt="Logo Santa María" className="school-logo" />
+              </div>
+              <div className="school-preview">
+                <img 
+                  src="/santa-maria-inicial.jpg" 
+                  alt="Estudiantes del Colegio Santa María de Guadalupe Inicial" 
+                />
+              </div>
+
+              <h3>Colegio E.B.R<br/>"Santa María de Guadalupe"<br/><span style={{fontSize: "1rem", color: "var(--secondary-color)"}}>- GRADO INICIAL</span></h3>
+              <p>
+                <strong>Educación Básica Regular (Inicial).</strong><br/><br/>
+                Brindamos un ambiente cálido, seguro y estimulante para los más pequeños. Promovemos fuertemente los valores cristianos y católicos. Nuestro modelo educativo mediante el juego y la exploración asegura un desarrollo psicomotriz, cognitivo y socioemocional óptimo en sus primeros años de aprendizaje.
+              </p>
+              <ul className="school-highlights">
+                <li>Educación Inicial especializada.</li>
+                <li>Docentes calificados para primera infancia.</li>
+                <li>Valores cristianos católicos.</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* School 2: Santa Maria Primaria y Secundaria */}
           <div 
             className="school-wrapper" 
-            ref={(el) => (cardsRef.current[0] = el)}
+            ref={(el) => (cardsRef.current[1] = el)}
           >
             <div className="school-card glass-panel">
               <div className="logo-container">
@@ -200,7 +227,7 @@ function App() {
                 />
               </div>
 
-              <h3>Colegio E.B.R<br/>"Santa María de Guadalupe"</h3>
+              <h3>Colegio E.B.R<br/>"Santa María de Guadalupe"<br/><span style={{fontSize: "1rem", color: "var(--secondary-color)"}}>- GRADO PRIMARIA Y SECUNDARIA</span></h3>
               <p>
                 <strong>Educación Básica Regular.</strong><br/><br/>
                 Formamos a niños y adolescentes a través de metodologías innovadoras. Promovemos fuertemente los valores cristianos y católicos. Nuestro modelo educativo asegura que los alumnos de nivel primario y secundario obtengan bases académicas altamente competitivas, junto a un sólido desarrollo socioemocional apoyado por tutores y personal psicológico dedicado.
@@ -213,10 +240,10 @@ function App() {
             </div>
           </div>
 
-          {/* San Martin Card */}
+          {/* School 3: San Martin */}
           <div 
-            className="school-wrapper"
-            ref={(el) => (cardsRef.current[1] = el)}
+            className="school-wrapper" 
+            ref={(el) => (cardsRef.current[2] = el)}
           >
             <div className="school-card glass-panel">
               <div className="logo-container">

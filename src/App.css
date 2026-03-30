@@ -89,8 +89,8 @@ html {
 
 /* Schools Section */
 .schools-section {
-  padding: 6rem 2rem;
-  max-width: 1200px;
+  padding: 6rem 1rem;
+  max-width: 1400px; /* Increased max width to fit 3 cards better */
   margin: 0 auto;
 }
 
@@ -116,10 +116,20 @@ html {
   border-radius: 2.5px;
 }
 
+.schools-grid::-webkit-scrollbar {
+  display: none;
+}
+
 .schools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  padding-top: 4.5rem; /* Allow space for floating logos */
+  margin-top: 1rem;
+}
+
+.school-wrapper {
+  position: relative;
 }
 
 .school-card {
@@ -433,7 +443,37 @@ footer {
   margin-top: auto;
 }
 
-/* Responsive */
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  /* Switch to horizontal swipe/scroll on tablets and smaller */
+  .schools-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
+    padding: 4.5rem 1rem 2rem 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  
+  .schools-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .school-wrapper {
+    flex: 0 0 90%;
+    min-width: 300px;
+    max-width: 400px;
+    scroll-snap-align: center;
+  }
+  
+  .schools-section {
+    padding: 4rem 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     width: 95%;
@@ -501,22 +541,6 @@ footer {
   .about-text h2, .schools-section h2, .features-section h2, .location-section h2 {
     font-size: 2.2rem;
     margin-bottom: 2.5rem;
-  }
-
-  .schools-grid {
-    grid-template-columns: 1fr;
-    gap: 6rem; /* Huge gap because of the absolutely positioned logo container */
-    margin-top: 4rem;
-  }
-
-  .school-card {
-    padding: 4rem 1.5rem 2rem; /* Ensure top space for logo */
-  }
-
-  .logo-container {
-    width: 120px;
-    height: 120px;
-    top: -60px;
   }
 
   .location-content {
