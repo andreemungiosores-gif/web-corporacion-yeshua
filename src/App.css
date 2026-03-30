@@ -16,11 +16,10 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Hero Section */
 .hero {
   text-align: center;
-  padding: 8rem 2rem 6rem;
-  background: linear-gradient(rgba(11, 61, 145, 0.85), rgba(20, 33, 61, 0.95)), url('/hero-yeshua.png') no-repeat center center/cover;
+  padding: 10rem 2rem 8rem;
+  background: linear-gradient(rgba(11, 61, 145, 0.35), rgba(7, 13, 24, 0.5)), url('/portada-hero-2.jpg') no-repeat center center/cover;
   color: white;
   position: relative;
   overflow: hidden;
@@ -40,14 +39,15 @@ html, body {
   color: white;
   font-size: 4.5rem;
   margin-bottom: 1.5rem;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6); /* More shadow for transparency */
 }
 
 .hero p {
   font-size: 1.25rem;
   max-width: 800px;
   margin: 0 auto;
-  opacity: 0.95;
+  opacity: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 
 /* About Section */
@@ -332,41 +332,60 @@ html, body {
   font-size: 2.5rem;
 }
 
-.location-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 2rem;
-  font-size: 1.3rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 2.5rem;
-  border-radius: 16px;
-  max-width: 1000px;
-  margin: 0 auto;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+.locations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 3rem;
+  align-items: center; /* Center cards horizontally */
 }
 
-.location-text {
-  display: flex;
+.location-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3rem;
   align-items: center;
-  gap: 1.5rem;
+  max-width: 1100px; /* Restrict width for better focus */
+  width: 90%;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.location-info {
   text-align: left;
 }
 
-.location-icon {
-  font-size: 3rem;
-  color: var(--secondary-color);
+.location-symbol {
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.location-map {
-  height: 300px;
+.location-info h3 {
+  font-family: var(--font-heading);
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.location-info p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.location-map-wrapper {
+  height: 380px;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
 
 /* Navbar */
@@ -598,24 +617,22 @@ footer {
     margin-bottom: 2.5rem;
   }
 
-  .location-content {
+  .location-item {
     grid-template-columns: 1fr;
     padding: 1.5rem;
     gap: 2rem;
   }
 
-  .location-text {
-    flex-direction: column;
+  .location-info {
     text-align: center;
-    gap: 1rem;
   }
 
-  .location-icon {
-    font-size: 2.5rem;
+  .location-info h3 {
+    font-size: 1.3rem;
   }
 
-  .location-map {
-    height: 250px;
+  .location-map-wrapper {
+    height: 300px;
   }
 }
 

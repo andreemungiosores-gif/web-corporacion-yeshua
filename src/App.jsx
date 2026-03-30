@@ -22,7 +22,8 @@ L.Icon.Default.mergeOptions({
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MAP_POSITION = [-8.373596666404865, -74.54289978098608]; // Pucallpa
+const MAP_POSITION = [-8.373596666404865, -74.54289978098608]; // Pucallpa Main
+const MAP_POSITION_INICIAL = [-8.37413686853864, -74.5431518177914]; // Grado Inicial
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -304,34 +305,64 @@ function App() {
       {/* Location Section */}
       <section id="ubicacion" className="location-section">
         <div ref={locationRef}>
-          <h2>Ubicación</h2>
-          <div className="location-content">
-            <div className="location-text">
-              <span className="location-icon">📍</span>
-              <p>
-                <strong>Sede Principal:</strong><br/>
-                Jirón Cajamarca 191, Callería - Pucallpa, Ucayali, Perú.
-              </p>
+          <h2>Nuestras Ubicaciones</h2>
+          <div className="locations-container">
+            {/* Location 1 */}
+            <div className="location-item glass-panel">
+              <div className="location-info">
+                <h3><span className="location-symbol">📍</span> Dirección del CEBA "San Martin de Porres" y EBR "Santa María de Guadalupe" Grado Primaria y Secundaria:</h3>
+                <p>
+                  Jirón Cajamarca 191, Callería - Pucallpa, Ucayali, Perú.
+                </p>
+              </div>
+              <div className="location-map-wrapper">
+                <MapContainer 
+                  center={MAP_POSITION} 
+                  zoom={18} 
+                  scrollWheelZoom={false} 
+                  style={{ height: "100%", width: "100%" }}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={MAP_POSITION}>
+                    <Popup>
+                      <strong>Sede Principal</strong><br/>
+                      Primaria, Secundaria y CEBA
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              </div>
             </div>
-            
-            <div className="location-map">
-              <MapContainer 
-                center={MAP_POSITION} 
-                zoom={15} 
-                scrollWheelZoom={false} 
-                style={{ height: "100%", width: "100%" }}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={MAP_POSITION}>
-                  <Popup>
-                    <strong>Corporación Yeshua SRL</strong><br/>
-                    Jirón Cajamarca 191, Pucallpa
-                  </Popup>
-                </Marker>
-              </MapContainer>
+
+            {/* Location 2 */}
+            <div className="location-item glass-panel">
+              <div className="location-info">
+                <h3><span className="location-symbol">📍</span> Dirección EBR "Santa María de Guadalupe" Grado Inicial:</h3>
+                <p>
+                  Jirón Cajamarca 148, Callería - Pucallpa, Ucayali, Perú.
+                </p>
+              </div>
+              <div className="location-map-wrapper">
+                <MapContainer 
+                  center={MAP_POSITION_INICIAL} 
+                  zoom={18} 
+                  scrollWheelZoom={false} 
+                  style={{ height: "100%", width: "100%" }}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={MAP_POSITION_INICIAL}>
+                    <Popup>
+                      <strong>EBR Santa María de Guadalupe</strong><br/>
+                      Grado Inicial
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              </div>
             </div>
           </div>
         </div>
