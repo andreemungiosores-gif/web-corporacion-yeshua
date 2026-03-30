@@ -97,7 +97,7 @@ html, body {
 
 /* Schools Section */
 .schools-section {
-  padding: 6rem 1.5rem;
+  padding: 8rem 1.5rem 6rem; /* Increased top padding to prevent navbar clipping h2 */
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
@@ -135,6 +135,11 @@ html, body {
 .schools-scroll-viewport {
   width: 100%;
   overflow: hidden; /* Clip but allow inner div to scroll */
+  position: relative; /* Anchor for hint arrow */
+}
+
+.scroll-hint-arrow {
+  display: none;
 }
 
 .schools-grid {
@@ -495,7 +500,32 @@ footer {
   }
 
   .schools-section {
-    padding: 4rem 1.5rem;
+    padding: 10rem 1.5rem 4rem; /* Even more top padding for small devices header space */
+  }
+
+  .scroll-hint-arrow {
+    display: flex;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    animation: pulseArrow 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseArrow {
+    0%, 100% { transform: translateY(-50%) translateX(0); opacity: 0.8; }
+    50% { transform: translateY(-50%) translateX(10px); opacity: 1; }
   }
 }
 

@@ -184,6 +184,11 @@ function App() {
         <h2 ref={schoolsHeadingRef}>Nuestras Instituciones</h2>
         
         <div className="schools-scroll-viewport">
+          <div className="scroll-hint-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
           <div className="schools-grid" ref={scrollContainerRef}>
           {/* School 1: Santa Maria Inicial */}
           <div className="school-wrapper" ref={(el) => (cardsRef.current[0] = el)}>
