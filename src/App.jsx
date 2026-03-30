@@ -183,7 +183,8 @@ function App() {
       <section id="instituciones" className="schools-section">
         <h2 ref={schoolsHeadingRef}>Nuestras Instituciones</h2>
         
-        <div className="schools-grid" ref={scrollContainerRef}>
+        <div className="schools-scroll-viewport">
+          <div className="schools-grid" ref={scrollContainerRef}>
           {/* School 1: Santa Maria Inicial */}
           <div className="school-wrapper" ref={(el) => (cardsRef.current[0] = el)}>
             <div className="school-card glass-panel">
@@ -268,6 +269,7 @@ function App() {
                 <li>Certificado oficial válido por el Ministerio de Educación - MINEDU.</li>
               </ul>
             </div>
+          </div>
           </div>
         </div>
       </section>
